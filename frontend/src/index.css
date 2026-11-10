@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  body {
+    @apply bg-canvas text-ink antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #0F6B5C;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Signature element: a 3px left-edge "signal rail" colored by status/priority,
+     used consistently across KPI cards, table rows, project cards and notifications. */
+  .signal-rail {
+    @apply border-l-[3px] pl-4;
+  }
+  .signal-rail--todo { border-color: theme('colors.signal.todo'); }
+  .signal-rail--in-progress { border-color: theme('colors.signal.progress'); }
+  .signal-rail--review { border-color: theme('colors.signal.review'); }
+  .signal-rail--completed { border-color: theme('colors.signal.completed'); }
+  .signal-rail--urgent { border-color: theme('colors.signal.urgent'); }
+
+  .card {
+    @apply bg-surface border border-line rounded-md shadow-card;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-3.5 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-dark;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-ink border border-line hover:bg-canvas;
+  }
+  .btn-danger {
+    @apply btn bg-white text-signal-urgent border border-signal-urgent/30 hover:bg-signal-urgent/5;
+  }
+  .btn-ghost {
+    @apply btn text-ink-muted hover:bg-canvas hover:text-ink;
+  }
+
+  .input {
+    @apply w-full rounded-sm border border-line bg-white px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand;
+  }
+  .label {
+    @apply block text-xs font-medium uppercase tracking-wide text-ink-muted mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-sm px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide;
+  }
+}

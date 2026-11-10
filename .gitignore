@@ -1,0 +1,24 @@
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development.secret
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+/dist
+/.vite
+
+# Production builds
+*.prof.raw
+
+# Database
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+```
